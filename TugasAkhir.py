@@ -7,7 +7,7 @@ root.geometry("450x570")
 
 bg = PhotoImage(file="D:\SD card\Background.png")
 label1 = Label(root, image=bg)
-label1.place(x=0, y=0)
+label1.pack()
 
 def harga():
     try:
@@ -37,6 +37,32 @@ def harga():
         elif mbl == "Toyota Alphard":
             total = hri*alphard
 
+        for i in range(len(nama)):
+            if nama[i:i+1] =='1':
+                errorcode = 1
+            elif nama[i:i+1] =='2':
+                errorcode = 1
+            elif nama[i:i+1] =='3' : 
+                errorcode = 1
+            elif nama[i:i+1] =='4' :
+                errorcode = 1
+            elif nama[i:i+1] =='5' :
+                errorcode = 1
+            elif nama[i:i+1] =='6' :
+                errorcode = 1
+            elif nama[i:i+1] =='7' :
+                errorcode = 1
+            elif nama[i:i+1] =='8' : 
+                errorcode = 1
+            elif nama[i:i+1] =='9' :
+                errorcode = 1
+            elif nama[i:i+1] =='0' :
+                errorcode = 1
+            elif nama=='': 
+                errorcode = 1
+        if errorcode != 0:
+            messagebox.showerror("Error","TIDAK BOLEH MEMASUKKAN NOMER")
+        return
         
         label17 = Label(root, text="Nama :  " + nama, bg="#f0f0d8", fg="#60a8c0", font=("helvetica",10)) 
         label17.place(x=5, y=420)
