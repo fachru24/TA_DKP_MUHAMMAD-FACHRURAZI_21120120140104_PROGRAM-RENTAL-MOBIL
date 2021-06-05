@@ -25,7 +25,6 @@ def harga():
         hiace = 1100000
         alphard  = 1200000
 
-
         if mbl == "Toyota Avanza":
             total = hri*avanza
         elif mbl == "Toyota Fortuner":
@@ -37,33 +36,8 @@ def harga():
         elif mbl == "Toyota Alphard":
             total = hri*alphard
 
-        for i in range(len(nama)):
-            if nama[i:i+1] =='1':
-                errorcode = 1
-            elif nama[i:i+1] =='2':
-                errorcode = 1
-            elif nama[i:i+1] =='3' : 
-                errorcode = 1
-            elif nama[i:i+1] =='4' :
-                errorcode = 1
-            elif nama[i:i+1] =='5' :
-                errorcode = 1
-            elif nama[i:i+1] =='6' :
-                errorcode = 1
-            elif nama[i:i+1] =='7' :
-                errorcode = 1
-            elif nama[i:i+1] =='8' : 
-                errorcode = 1
-            elif nama[i:i+1] =='9' :
-                errorcode = 1
-            elif nama[i:i+1] =='0' :
-                errorcode = 1
-            elif nama=='': 
-                errorcode = 1
-        if errorcode != 0:
-            messagebox.showerror("Error","TIDAK BOLEH MEMASUKKAN NOMER")
-        return
-        
+        global label17, label18, label19, label20, label21, label22
+
         label17 = Label(root, text="Nama :  " + nama, bg="#f0f0d8", fg="#60a8c0", font=("helvetica",10)) 
         label17.place(x=5, y=420)
         label18 = Label(root, text="Jenis Mobil : " + mbl, bg="#f0f0d8", fg="#60a8c0", font=("helvetica",10))
@@ -74,6 +48,8 @@ def harga():
         label20.place(x=5, y=480)
         label21 = Label(root, text="Metode Pembayaran : ", bg="#f0f0d8", fg="#60a8c0", font=("helvetica",10))
         label21.place(x=5, y=500)
+
+        global label22, label23, label24, label25, label26, label27, label28, label29, label30, label31
 
         if pembayaran == "Bank BCA":
             label22 = Label(root, text="No.Rek 7000561985, An.Fachrurazi", bg="#f0f0d8", fg="#60a8c0", font=("helvetica",10))
@@ -102,6 +78,37 @@ def harga():
             label31.place(x=140, y=500)
     except:
         messagebox.showerror("Error", "Data Input Salah/Belum Mengisi Semua Data")
+
+def clear():
+
+    pembayaran = listpembayaran.get()
+
+    listmobil.set(" ")
+    listpembayaran.set(" ")
+    label17.destroy()
+    label18.destroy()
+    label19.destroy()
+    label20.destroy()
+    label21.destroy()
+    e1.delete(0, END)
+    e2.delete(0, END)
+    e3.delete(0, END)
+    
+    if pembayaran == "Bank BCA":
+        label23.destroy()
+        label22.destroy()
+    elif pembayaran == "Bank Mandiri":
+        label25.destroy()
+        label24.destroy()
+    elif pembayaran == "Bank BNI":
+        label27.destroy()
+        label26.destroy()
+    elif pembayaran == "Shopee Pay":
+        label29.destroy()
+        label28.destroy()
+    elif pembayaran == "Dana":
+        label31.destroy()
+        label30.destroy()
 
 
 label2 = Label(root, text="Masukkan Nama Lengkap Anda", bg="#f0f0d8", fg="#60a8c0", font=("helvetica",10))
@@ -155,8 +162,9 @@ drop1.place(x=10, y=210, width=200)
 drop2 = OptionMenu(root, listpembayaran, *list2)
 drop2.place(x=10, y=330, width=200)
 
-pesan = Button(root, text="Pesan", command=harga, width=20)
-pesan.place(x=30, y=370)
-
+pesan = Button(root, text="Pesan", command=harga, width=10)
+pesan.place(x=10, y=370)
+clear = Button(root, text="Clear", command=clear, width=10)
+clear.place(x=120, y=370)
 
 root.mainloop()
